@@ -4,30 +4,29 @@ window.onload = function(){
     var symbol = "X";
     var turns = 0;
     let x = document.getElementById("board").children;
-    var button = document.getElementsByClassName("btn")[0];
-    var state = new Array(9).fill("");
+    var state = new Array(9).fill(""); 
+    p.innerHTML = "Move your mouse over a square and click to play an X or an O.";
     addSquares(); 
     clickButton();
 
     
 function drawCheck(){ // Checks if game ends in a draw
     if(turns === 9 && !(p.classList.contains("you-won"))){
+        p.classList.add("draw")
         p.innerHTML = "Game Ends In A Draw! Press New Game To Begin!";
-        p.classList.add("you-won");
          }
     }
 
 function clickButton(){ // adds a click even to the New Game Button
-    button.onclick = function(){
+    console.log(state);
+    document.getElementsByClassName("btn")[0].onclick = function(){
          turns = 0;
-         symbol = "X";
          state = new Array(9).fill("");
          p.classList.remove("you-won")
          p.innerHTML = "Move your mouse over a square and click to play an X or an O.";
          for(let index = 0; index < x.length; index++){
              x[index].innerHTML = "";
-             x[index].classList.remove("X");
-             x[index].classList.remove("O");
+             x[index].classList.remove("X","O");
             }
         }
     }
